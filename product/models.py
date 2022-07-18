@@ -11,8 +11,7 @@ class Category(models.Model):
         db_table = "categories"
 
     def get_absolute_url(self):
-        print("get_url = ", end=""), print(reverse('product:list', args=[self.name]))
-        return reverse('product:list', args=[self.name]) # product/list/laptop
+        return reverse('product:list', args=[self.name])
 
 
 class Product(models.Model):

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product detail</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Image</td>
+            <td>Product</td>
+
+        </tr>
+
+        <tr>
+            <td>
+                <a href="{{product.get_absolute_url}}">
+                    <img src="{{ product.image.url }}" width="200px">
+<!--                    <h5>{{product.name}}</h5>-->
+                </a>
+                <h5>{{product.name}}</h5>
+            </td>
+<!--            <td>{{product.name}}</td>-->
+            <td>
+
+                <form action="{% url 'product:product_order' %}" method="POST">
+                    {% csrf_token %}
+                    <h5>Quantity</h5>
+                    <input type="hidden" name="product" value="{{ product.name}}">
+                    <input type="text" name="quantity">
+                    <p>
+                        <h5>Address</h5>
+                        <input type="text" name="address">
+                    </p>
+                    <button type="submit">주문</button>
+                </form>
+
+            </td>
+        </tr>
+
+    </table>
+
+</body>
+</html>
