@@ -1,12 +1,13 @@
 from django.db import models
 
-# Create your models here.
 
+class User(models.Model):
+    email = models.EmailField(max_length=100, null=False, unique=True)
+    password = models.CharField(max_length=100)
 
-class UserModel(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
     class Meta:
-        db_table = "my_user"
+        db_table = 'users'
 
-
-    username = models.EmailField(max_length=20, null=False)
-    password = models.CharField(max_length=256, null=False)
